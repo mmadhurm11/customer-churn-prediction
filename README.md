@@ -1,4 +1,3 @@
-# customer-churn-prediction
 
 # Customer Churn Prediction & Retention Strategy 📉📈
 
