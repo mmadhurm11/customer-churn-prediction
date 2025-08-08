@@ -95,16 +95,14 @@ sns.barplot(x='Importance', y='Feature', data=features_df.head(10), ax=ax3)
 st.pyplot(fig3)
 
     # ─────────────────────────────────────────
-    # 📥 DOWNLOAD PREDICTIONS
     # ─────────────────────────────────────────
-    csv = df.to_csv(index=False).encode('utf-8')
-    st.download_button(
-        label="📥 Download Predictions as CSV",
-        data=csv,
-        file_name="churn_predictions.csv",
-        mime="text/csv"
-    )
-else:
-    st.info("Upload a CSV file to get started.")
+  # 📥 Download Predictions
+st.subheader("📥 Download Predictions")
 
-
+csv = df.to_csv(index=False).encode('utf-8')
+st.download_button(
+    label="📥 Download CSV",
+    data=csv,
+    file_name="churn_predictions.csv",
+    mime="text/csv"
+)
