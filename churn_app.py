@@ -75,17 +75,19 @@ if uploaded_file:
     # ─────────────────────────────────────────
     # 📌 FEATURE IMPORTANCE
     # ─────────────────────────────────────────
-    st.subheader("📌 Top Churn Drivers")
-    importances = model.feature_importances_
-    features_df = pd.DataFrame({
-        'Feature': df.columns,
-        'Importance': importances
-    }).sort_values(by='Importance', ascending=False)
+   t.subheader("📌 Top Churn Drivers")
 
-    fig3, ax3 = plt.subplots()
-    sns.barplot(x='Importance', y='Feature', data=features_df.head(10), ax=ax3)
-    st.pyplot(fig3)
+feature_names = model.get_booster().feature_names
+importances = model.feature_importances_
 
+features_df = pd.DataFrame({
+    'Feature': feature_names,
+    'Importance': importances
+}).sort_values(by='Importance', ascending=False)
+
+fig3, ax3 = plt.subplots()
+sns.barplot(x='Importance', y='Feature', data=features_df.head(10), ax=ax3)
+st.pyplot(fig3)
     # ─────────────────────────────────────────
     # 📥 DOWNLOAD PREDICTIONS
     # ─────────────────────────────────────────
@@ -98,3 +100,4 @@ if uploaded_file:
     )
 else:
     st.info("Upload a CSV file to get started.")
+
