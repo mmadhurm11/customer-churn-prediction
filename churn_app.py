@@ -75,19 +75,25 @@ if uploaded_file:
     # ─────────────────────────────────────────
     # 📌 FEATURE IMPORTANCE
     # ─────────────────────────────────────────
-   t.subheader("📌 Top Churn Drivers")
+  # 📌 Top Churn Drivers
+st.subheader("📌 Top Churn Drivers")
 
-feature_names = model.get_booster().feature_names
+# Fallback: Manually get feature names from uploaded file (before prediction columns added)
+original_features = df.drop(columns=["Churn Probability", "Churn Prediction"], errors="ignore").columns
 importances = model.feature_importances_
 
+# Ensure same length
+original_features = original_features[:len(importances)]
+
 features_df = pd.DataFrame({
-    'Feature': feature_names,
+    'Feature': original_features,
     'Importance': importances
 }).sort_values(by='Importance', ascending=False)
 
 fig3, ax3 = plt.subplots()
 sns.barplot(x='Importance', y='Feature', data=features_df.head(10), ax=ax3)
 st.pyplot(fig3)
+
     # ─────────────────────────────────────────
     # 📥 DOWNLOAD PREDICTIONS
     # ─────────────────────────────────────────
@@ -100,4 +106,5 @@ st.pyplot(fig3)
     )
 else:
     st.info("Upload a CSV file to get started.")
+
 
