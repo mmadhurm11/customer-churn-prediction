@@ -31,8 +31,8 @@ Customer churn is a major issue in telecom. The goal is to:
 
 - Python (pandas, sklearn, xgboost, seaborn, matplotlib)
 - Google Colab
-- GitHub (for sharing)
-- (Optional next step: Streamlit or Power BI)
+- GitHub 
+= Streamlit
 
 ## 🚀 Results
 
