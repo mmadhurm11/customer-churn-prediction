@@ -75,34 +75,26 @@ if uploaded_file:
     # ─────────────────────────────────────────
     # 📌 FEATURE IMPORTANCE
     # ─────────────────────────────────────────
-  # 📌 Top Churn Drivers
-st.subheader("📌 Top Churn Drivers")
+    st.subheader("📌 Top Churn Drivers")
+    importances = model.feature_importances_
+    features_df = pd.DataFrame({
+        'Feature': df.columns,
+        'Importance': importances
+    }).sort_values(by='Importance', ascending=False)
 
-# Fallback: Manually get feature names from uploaded file (before prediction columns added)
-original_features = df.drop(columns=["Churn Probability", "Churn Prediction"], errors="ignore").columns
-importances = model.feature_importances_
-
-# Ensure same length
-original_features = original_features[:len(importances)]
-
-features_df = pd.DataFrame({
-    'Feature': original_features,
-    'Importance': importances
-}).sort_values(by='Importance', ascending=False)
-
-fig3, ax3 = plt.subplots()
-sns.barplot(x='Importance', y='Feature', data=features_df.head(10), ax=ax3)
-st.pyplot(fig3)
+    fig3, ax3 = plt.subplots()
+    sns.barplot(x='Importance', y='Feature', data=features_df.head(10), ax=ax3)
+    st.pyplot(fig3)
 
     # ─────────────────────────────────────────
+    # 📥 DOWNLOAD PREDICTIONS
     # ─────────────────────────────────────────
-  # 📥 Download Predictions
-st.subheader("📥 Download Predictions")
-
-csv = df.to_csv(index=False).encode('utf-8')
-st.download_button(
-    label="📥 Download CSV",
-    data=csv,
-    file_name="churn_predictions.csv",
-    mime="text/csv"
-)
+    csv = df.to_csv(index=False).encode('utf-8')
+    st.download_button(
+        label="📥 Download Predictions as CSV",
+        data=csv,
+        file_name="churn_predictions.csv",
+        mime="text/csv"
+    )
+else:
+    st.info("Upload a CSV file to get started.")
