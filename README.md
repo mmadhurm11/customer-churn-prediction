@@ -1,47 +1,26 @@
+# 🧠 AI-Powered Customer Churn Prediction Dashboard
 
-# Customer Churn Prediction & Retention Strategy 📉📈
+A Streamlit-based interactive dashboard to predict customer churn using a trained XGBoost model. Built for business analysts to make data-driven retention decisions.
 
-This project uses machine learning (XGBoost) to predict customer churn based on telecom usage patterns. It also identifies key churn drivers to support business retention strategies.
+## 🔍 Features
+- 📤 Upload a CSV file of customer data
+- 🤖 Predict churn probability using AI (XGBoost)
+- 📈 Visual charts: churn by contract & payment method
+- 📥 Download results for further analysis
 
-## 🔍 Problem Statement
+## 🚀 Live App
+👉 [Click here to try the app](https://customer-churn-prediction-11.streamlit.app/)  
 
-Customer churn is a major issue in telecom. The goal is to:
-- Predict which customers are likely to leave
-- Understand why they leave
-- Propose actionable retention strategies
+## 📊 Sample Output
+| Customer ID | Churn Probability | Churn Prediction |
+|-------------|-------------------|------------------|
+| 0001-BG | 0.86 | 1 |
+| 0023-LK | 0.21 | 0 |
 
-## 🧠 Techniques Used
-
-- Data cleaning & preprocessing (pandas, LabelEncoder)
-- Model training using XGBoost
-- Evaluation using accuracy, F1-score, confusion matrix
-- Feature importance analysis for business insights
-
-## 📊 Key Features Driving Churn
-- Short tenure
-- Monthly contracts
-- Electronic check payment
-- Lack of online security or tech support
-
-## 📁 Dataset
-
-[Telco Customer Churn Dataset](https://www.kaggle.com/datasets/blastchar/telco-customer-churn)
-
-## 💻 Tools Used
-
-- Python (pandas, sklearn, xgboost, seaborn, matplotlib)
-- Google Colab
-- GitHub 
-= Streamlit
-
-## 🚀 Results
-
-- Accuracy: ~80%
-- Identified key churn triggers
-- Helped frame data-backed retention strategy
-
-## 📂 Run it Yourself
-
-```bash
-pip install -r requirements.txt
-jupyter notebook churn_prediction.ipynb
+## 📦 Tech Stack
+- Python
+- Streamlit
+- pandas
+- XGBoost
+- scikit-learn
+- matplotlib & seaborn
